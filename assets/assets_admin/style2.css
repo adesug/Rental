@@ -1,0 +1,17 @@
+
+
+img{
+    animation: anim 5s;
+}
+
+@keyframes anim{
+    from{
+        width: 0;
+        height: 0;
+       
+    }
+    to{}
+}
+
+
+
