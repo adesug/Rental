@@ -41,7 +41,7 @@
                switch($cek->role_id){
                     case 1 : redirect('admin/dashboard');
                         break;
-                    case 2 : redirect('user/dashboard');
+                    case 2 : redirect('customer/dashboard');
                         break;
 
                     default :  break;
@@ -61,7 +61,7 @@
      public function logout()
      {
          $this->session->sess_destroy();
-         redirect('user/dashboard');
+         redirect('customer/dashboard');
      }
    
  }

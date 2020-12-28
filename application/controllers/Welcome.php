@@ -38,12 +38,11 @@ class Welcome extends CI_Controller {
     // $this->load->view('admin/dashboard',$data);
 	// $this->load->view('template_admin/footer');
 
-        $data['mobil'] = $this->rental_model->get_data('mobil')->result();
-        $this->load->view('template_user/header');
-        $this->load->view('template_user/navbar');
-        $this->load->view('template_user/sidebar');
-        $this->load->view('user/dashboard',$data);
-        $this->load->view('template_user/footer');
+	$data['mobil'] = $this->rental_model->get_data('mobil')->result();
+	$this->load->view('template_customer/header');
+	$this->load->view('template_customer/navbar');
+	$this->load->view('customer/dashboard',$data);
+	$this->load->view('template_customer/footer');
     
     
 	}
