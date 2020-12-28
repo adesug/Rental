@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Nov 2020 pada 04.40
+-- Waktu pembuatan: 28 Des 2020 pada 12.15
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -49,15 +49,20 @@ CREATE TABLE `custumer` (
   `gender` varchar(20) NOT NULL,
   `no_telepon` varchar(20) NOT NULL,
   `no_ktp` varchar(50) NOT NULL,
-  `password` varchar(120) NOT NULL
+  `password` varchar(120) NOT NULL,
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `custumer`
 --
 
-INSERT INTO `custumer` (`id_customer`, `nama`, `username`, `alamat`, `gender`, `no_telepon`, `no_ktp`, `password`) VALUES
-(1, 'Darmaji', 'maji69', 'Tegal', 'L', '089577777777', '33225373446789543', '12345');
+INSERT INTO `custumer` (`id_customer`, `nama`, `username`, `alamat`, `gender`, `no_telepon`, `no_ktp`, `password`, `role_id`) VALUES
+(4, 'asd', 'asd', 'asd', 'Laki-laki', '123', '123', '202cb962ac59075b964b07152d234b70', 0),
+(5, 'bakjdb', 'abkba', 'ajhda', 'Perempuan', '879', '989', 'ee11cbb19052e40b07aac0ca060c23ee', 0),
+(9, 'fhgfjh', 'hkjk', 'iuhihnl', 'Perempuan', 'hbjk', 'kjnknkj', 'ee7590180b0fc3e6e5009aaeb9e201f4', 0),
+(10, 'user', 'user', 'tegal', 'Laki-laki', '090890990', '4765676', 'ee11cbb19052e40b07aac0ca060c23ee', 2),
+(11, 'Adesug', 'admin', 'Tegal', 'Laki-laki', '0895676657', '56586786878', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 -- --------------------------------------------------------
 
@@ -73,6 +78,11 @@ CREATE TABLE `mobil` (
   `warna` varchar(20) NOT NULL,
   `tahun` varchar(4) NOT NULL,
   `status` varchar(50) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `denda` int(11) NOT NULL,
+  `supir` int(11) NOT NULL,
+  `ac` int(11) NOT NULL,
+  `mp3_player` int(11) NOT NULL,
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -80,11 +90,12 @@ CREATE TABLE `mobil` (
 -- Dumping data untuk tabel `mobil`
 --
 
-INSERT INTO `mobil` (`id_mobil`, `kode_type`, `merk`, `no_plat`, `warna`, `tahun`, `status`, `gambar`) VALUES
-(8, 'MPV', 'honda', 'freed', 'pink', '2020', '1', '11.jpg'),
-(9, 'MPV', 'honda', 'freed', 'pink', '2020', '1', '12.jpg'),
-(11, 'SPT', 'lamborghini', 'G 777 A', 'Merah', '2021', '1', '13.jpg'),
-(12, 'SDN', 'Honda City', 'G 1717 AN', 'Hitam', '2019', '0', '20201003_000827.jpg');
+INSERT INTO `mobil` (`id_mobil`, `kode_type`, `merk`, `no_plat`, `warna`, `tahun`, `status`, `harga`, `denda`, `supir`, `ac`, `mp3_player`, `gambar`) VALUES
+(44, 'MVN', 'Honda Jazz Manual', 'G 1717 AN', 'Merah', '2019', '1', 200000, 100000, 1, 1, 2, 'jazz.png'),
+(45, 'MPV', 'Toyota Avanza Veloz', 'G 1782 AN', 'Hitam', '2019', '1', 0, 0, 0, 0, 0, 'Avanza.png'),
+(46, 'HTB', 'Honda HRV', 'B 4 AN', 'Putih', '2020', '0', 0, 0, 0, 0, 0, 'hrv1.png'),
+(47, 'MPV', 'Daihatsu Luxio', 'D 2727 BE', 'Dark Silver', '2018', '1', 0, 0, 0, 0, 0, 'luxio.png'),
+(48, 'MVN', 'Honda Brio', 'G 777 A', 'Kuning', '2020', '1', 0, 0, 0, 0, 0, 'brio.png');
 
 -- --------------------------------------------------------
 
@@ -119,10 +130,14 @@ CREATE TABLE `tipe` (
 --
 
 INSERT INTO `tipe` (`id_type`, `kode_type`, `nama_type`) VALUES
-(1, 'SDNnn', 'Sedan'),
+(1, 'SDN', 'Sedan'),
 (4, 'SUV', 'Sport Vihicle'),
-(5, 'HTB', 'Hachtback'),
-(7, 'mb', 'mb');
+(8, 'MVN', 'Minivan'),
+(9, 'SPT', 'Sport'),
+(10, 'CP', 'Coupe'),
+(11, 'MPV', 'Multi Puprose Vehicle'),
+(12, 'HTB', 'Hatback'),
+(15, 'cb', 'coba');
 
 -- --------------------------------------------------------
 
@@ -195,13 +210,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `custumer`
 --
 ALTER TABLE `custumer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `rental`
@@ -213,7 +228,7 @@ ALTER TABLE `rental`
 -- AUTO_INCREMENT untuk tabel `tipe`
 --
 ALTER TABLE `tipe`
-  MODIFY `id_type` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_type` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
